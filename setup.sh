@@ -19,3 +19,7 @@ cd SFMono-Nerd-Font-Ligaturized
 mkdir -p ~/.local/share/fonts
 cp *.otf ~/.local/share/fonts
 fc-cache -f -v
+
+# Neovim
+# If no ssh key: https://github.com/domsley/nvim.git
+git clone git@github.com:domsley/nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
