@@ -20,7 +20,7 @@ config.font = wezterm.font("Liga SFMono Nerd Font")
 config.color_scheme = "Ir Black"
 
 -- Execute tmux in WSL
-config.default_prog = { "wsl.exe", "~", "tmux" }
+config.default_prog = { "~" }
 
 config.exit_behavior = "Close"
 
