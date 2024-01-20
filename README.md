@@ -15,3 +15,6 @@ sh setup.sh
 ### Tmux
 
 In tmux session hit 'prefix + I' to install tpm plugins.
+
+
+![screenshot](https://github.com/domsley/dotfiles/assets/16507635/86cf5868-217e-4917-93be-363dd748a1f5)
