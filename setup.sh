@@ -1,8 +1,7 @@
 #!bin/bash
-ln -sf "$(pwd)/tmux/tmux.conf" ~/.tmux.conf
-ln -sf "$(pwd)/oh-my-zsh/.zshrc" ~/.zshrc
-ln -sf "$(pwd)/kitty" ~/.config
-ln -sf "$(pwd)/.wezterm.lua" ~/.config
+ln -sf "$(pwd)/tmux.conf" ~/.tmux.conf
+ln -sf "$(pwd)/zshrc" ~/.zshrc
+ln -sf "$(pwd)/wezterm.lua" ~/.config
 
 # TPM
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
