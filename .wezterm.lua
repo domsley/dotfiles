@@ -19,9 +19,6 @@ config.font = wezterm.font("Liga SFMono Nerd Font")
 -- Colors
 config.color_scheme = "Ir Black"
 
--- Execute tmux in WSL
-config.default_prog = { "~" }
-
 config.exit_behavior = "Close"
 
 -- and finally, return the configuration to wezterm
