@@ -21,4 +21,4 @@ fc-cache -f -v
 
 # Neovim
 # If no ssh key: https://github.com/domsley/nvim.git
-git clone git@github.com:domsley/nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+git clone git@github.com:domsley/nvim.git ~/.config/nvim
