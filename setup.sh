@@ -20,6 +20,9 @@ mkdir -p ~/.local/share/fonts
 cp *.otf ~/.local/share/fonts
 fc-cache -f -v
 
+
+#TODO: Create argument for this
 # Neovim
-# If no ssh key: https://github.com/domsley/nvim.git
-git clone git@github.com:domsley/nvim.git ~/.config/nvim
+# If no ssh key
+git clone https://github.com/domsley/nvim.git ~/.config/nvim
+# git clone git@github.com:domsley/nvim.git ~/.config/nvim
