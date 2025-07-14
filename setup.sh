@@ -3,6 +3,7 @@ ln -sf "$(pwd)/tmux.conf" ~/.tmux.conf
 ln -sf "$(pwd)/zshrc" ~/.zshrc
 ln -sf "$(pwd)/wezterm.lua" ~/.wezterm.lua
 ln -sf "$(pwd)/kitty.conf" ~/.config/kitty/kitty.conf
+ln -sf "$(pwd)/hypr" ~/.config/hypr
 
 # TPM
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
