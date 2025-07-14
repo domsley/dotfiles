@@ -1,0 +1,14 @@
+<!DOCTYPE patchbay>
+<patchbay name="LineIn" version="0.9.3">
+ <items>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC892 Analog:capture_FR"/>
+   <input node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC892 Analog:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC892 Analog:capture_FL"/>
+   <input node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC892 Analog:playback_FL"/>
+  </item>
+ </items>
+</patchbay>
+
