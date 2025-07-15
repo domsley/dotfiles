@@ -89,5 +89,11 @@ In tmux session hit 'prefix + I' to install tpm plugins.
 - [ ] **Docker**
 
 ### Notes
-Make sure it's running:
-swww-daemon &
+**full setup/dev script**
+
+Make sure sww daemon is running:
+swww-daemon
+
+While testing the installation on another PC, I encountered issues getting my Hyprpanel configuration to work. It appears there may have been breaking changes in the configuration format from the Git version.
+To install the latest Git version (which the current config expects), use the following command:
+yay -S ags-hyprpanel-git
