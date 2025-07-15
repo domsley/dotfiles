@@ -14,6 +14,7 @@
 - [ ] Install **swww** for wallpaper management.
 - [ ] Find a way to **fully reload all components** under Hyprland — currently, HyprPanel does not reload properly.
 - [ ] Write a module for Hyprpanel which will show current Keyboard Layout
+- [ ] Allow to toggle GAPS Outer/Inner on keybind
 
 ### Base Development Tools
 - [ ] Install **base-devel** and **Linux headers** to support building from source.
@@ -57,3 +58,7 @@ sh setup.sh
 ### Tmux
 
 In tmux session hit 'prefix + I' to install tpm plugins.
+
+
+### Guide
+[NVIDIA Drivers](https://github.com/korvahannu/arch-nvidia-drivers-installation-guide)
