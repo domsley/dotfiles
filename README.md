@@ -1,3 +1,46 @@
+## Introduction
+
+These are my personal dotfiles — tailored for my workflow and system.  
+Feel free to **steal**, **modify**, and use them however you like.
+
+>  **Note:**  
+> The setup script may install packages you **don’t need**, or in rare cases, packages that could **break things** on your system.  
+> Use with caution and **review the script before running it**.
+
+
+### Prerequisites:
+- zsh
+- [oh-my-zsh](https://ohmyz.sh/#install)
+- Neovim (possibly nightly build)
+- Arch Based Distro
+
+### Setup
+
+#### Arguments
+```shell
+--https = You will clone repositories that are public via https
+--full-setup = Install everything ment for fresh Arch
+```
+
+Run setup with https protocol or link configs manually:
+```shell
+git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+chmod +x setup.sh
+./setup.sh --https
+```
+
+### Tmux
+
+In tmux session hit 'prefix + I' to install tpm plugins.
+
+
+### Guide
+[NVIDIA Drivers](https://github.com/korvahannu/arch-nvidia-drivers-installation-guide)
+
+
+---
+
 ## TODO
 
 ### General Setup
@@ -44,24 +87,3 @@
 - [ ] **Syncthing**
 - [ ] **Timeshift**
 - [ ] **Docker**
-
-### Prerequisites:
-- zsh
-- [oh-my-zsh](https://ohmyz.sh/#install)
-- Neovim (possibly nightly build)
-
-### Setup
-
-Run setup or link configs manually:
-
-```shell
-sh setup.sh
-```
-
-### Tmux
-
-In tmux session hit 'prefix + I' to install tpm plugins.
-
-
-### Guide
-[NVIDIA Drivers](https://github.com/korvahannu/arch-nvidia-drivers-installation-guide)
