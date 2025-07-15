@@ -13,6 +13,7 @@
 - [ ] Install and improve the **Rofi configuration**.
 - [ ] Install **swww** for wallpaper management.
 - [ ] Find a way to **fully reload all components** under Hyprland — currently, HyprPanel does not reload properly.
+- [ ] Write a module for Hyprpanel which will show current Keyboard Layout
 
 ### Base Development Tools
 - [ ] Install **base-devel** and **Linux headers** to support building from source.
