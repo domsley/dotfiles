@@ -87,3 +87,7 @@ In tmux session hit 'prefix + I' to install tpm plugins.
 - [ ] **Syncthing**
 - [ ] **Timeshift**
 - [ ] **Docker**
+
+### Notes
+Make sure it's running:
+swww-daemon &
