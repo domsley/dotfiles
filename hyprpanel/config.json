@@ -394,7 +394,7 @@
   "menus.clock.time.hideSeconds": true,
   "menus.clock.weather.enabled": false,
   "menus.clock.weather.unit": "metric",
-  "theme.font.size": "0.85rem",
+  "theme.font.size": "0.95rem",
   "menus.media.hideAuthor": true,
   "wallpaper.enable": true,
   "theme.font.weight": 600,
