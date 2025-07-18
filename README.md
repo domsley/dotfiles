@@ -38,7 +38,6 @@ In tmux session hit 'prefix + I' to install tpm plugins.
 ### Guide
 [NVIDIA Drivers](https://github.com/korvahannu/arch-nvidia-drivers-installation-guide)
 
-
 ---
 
 ## TODO
@@ -62,6 +61,9 @@ In tmux session hit 'prefix + I' to install tpm plugins.
 - [ ] Create two setup scripts: one **full setup** for a complete Arch install, and one **minimal setup** focused on development tools only.
 - [ ] Enable **system-wide dark mode**.
 - [ ] Set **Num Lock** to be disabled by default.
+- [x] Super + Shift + C = Color picker
+- [ ] Super + Shift + S = Screeshot Selection
+- [ ] Tweak animation easing
 
 ### Base Development Tools
 - [ ] Install **base-devel** and **Linux headers** to enable building software from source.
@@ -90,10 +92,21 @@ In tmux session hit 'prefix + I' to install tpm plugins.
 
 ### Notes
 **full setup/dev script**
-
 Make sure sww daemon is running:
-swww-daemon
+swww-daemon - Find out how to ensure it's running, it looks like when you restart hyprpanel via shortcut it just dies.
+When I open program/app make it so the app will open on current focused monitor and focus on it automaticly
+Make random-wallpaper script pseudorandom
+I added font to hyprpanel which is downloaded only with ssh protocol, config will fail with https
+Make keyboard repeat faster
+Shortcut for Firefox/Zen
+Hide cursor after 10 sec of not using mouse
 
 While testing the installation on another PC, I encountered issues getting my Hyprpanel configuration to work. It appears there may have been breaking changes in the configuration format from the Git version.
 To install the latest Git version (which the current config expects), use the following command:
 yay -S ags-hyprpanel-git
+
+### Required packages
+yay -S ags-hyprpanel-git
+hyprpicker
+nwg-displays - This will create config for current Monitor configuration, Hyprland will source it. This looks like a good option of managing monitors since every device have different setup.
+hyprshell - new project writen in Rust chance of being problematic
