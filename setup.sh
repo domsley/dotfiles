@@ -66,6 +66,9 @@ create_clean_symlink "$(pwd)/zshrc" ~/.zshrc
 create_clean_symlink "$(pwd)/kitty.conf" ~/.config/kitty/kitty.conf
 create_clean_symlink "$(pwd)/hypr" ~/.config/hypr
 create_clean_symlink "$(pwd)/hyprpanel" ~/.config/hyprpanel
+create_clean_symlink "$(pwd)/waybar" ~/.config/waybar
+create_clean_symlink "$(pwd)/rofi" ~/.config/rofi
+create_clean_symlink "$(pwd)/scripts" ~/.config/custom_scripts
 
 # TPM (Tmux Plugin Manager)
 echo "Installing Tmux Plugin Manager (TPM)..."
@@ -110,13 +113,17 @@ else
   echo "Cloning nvim config with SSH..."
   git clone git@github.com:domsley/nvim.git ~/.config/nvim
 
-  if [ -d ~/Pictures/wallpapers ]; then
-    echo "Removing existing ~/Pictures/wallpapers..."
-    rm -rf ~/Pictures/wallpapers
+  read -p "Do you want to include the wallpaper repository for download? [y/N]: " include_wallpapers
+  if [[ "$include_wallpapers" =~ ^[Yy]$ ]]; then
+    if [ -d ~/Pictures/wallpapers ]; then
+      echo "Removing existing ~/Pictures/wallpapers..."
+      rm -rf ~/Pictures/wallpapers
+    fi
+    echo "Cloning wallpapers with SSH..."
+    git clone git@github.com:domsley/wallpapers.git ~/Pictures/wallpapers
+  else
+    echo "Skipping wallpaper repository download."
   fi
-
-  echo "Cloning wallpapers with SSH..."
-  git clone git@github.com:domsley/wallpapers.git ~/Pictures/wallpapers
 fi
 
 echo "Setup complete!"

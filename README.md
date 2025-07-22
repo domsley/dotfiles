@@ -35,6 +35,41 @@ chmod +x setup.sh
 In tmux session hit 'prefix + I' to install tpm plugins.
 
 
+### Shortcuts (Hyprland)
+
+| Shortcut                | Action/Command                                 | Description                                 |
+|-------------------------|------------------------------------------------|---------------------------------------------|
+| SUPER + Return          | $terminal (kitty)                              | Open terminal                               |
+| SUPER + C               | killactive                                     | Close active window                         |
+| SUPER + M               | exit                                           | Logout/exit Hyprland                        |
+| SUPER + E               | $fileManager (dolphin)                         | Open file manager                           |
+| SUPER + V               | togglefloating                                 | Toggle floating mode for window             |
+| SUPER + R               | $menu (rofi -show drun)                        | Open app launcher (rofi)                    |
+| SUPER + P               | pseudo                                         | Toggle pseudotile (dwindle layout)          |
+| SUPER + J               | togglesplit                                    | Toggle split orientation (dwindle layout)   |
+| SUPER + SHIFT + C       | sleep 0.5 && hyprpicker -a                     | Color picker                                |
+| SUPER + SHIFT + R       | hyprpanel -q; hyprpanel && swww-daemon         | Restart Hyprpanel and swww-daemon           |
+| SUPER + Arrow Keys      | movefocus (l/r/u/d)                            | Move focus between windows                  |
+| SUPER + [1-9,0]         | workspace [1-10]                               | Switch to workspace                         |
+| SUPER + SHIFT + [1-9,0] | movetoworkspace [1-10]                         | Move window to workspace                    |
+| SUPER + mouse_down      | workspace e+1                                  | Next workspace (scroll down)                |
+| SUPER + mouse_up        | workspace e-1                                  | Previous workspace (scroll up)              |
+| SUPER + LMB             | movewindow                                     | Move window (drag with mouse)               |
+| SUPER + RMB             | resizewindow                                   | Resize window (drag with mouse)             |
+| XF86AudioRaiseVolume    | wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ | Raise volume                                |
+| XF86AudioLowerVolume    | wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-      | Lower volume                                |
+| XF86AudioMute           | wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle     | Mute/unmute audio output                    |
+| XF86AudioMicMute        | wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle   | Mute/unmute microphone                      |
+| XF86MonBrightnessUp     | brightnessctl -e4 -n2 set 5%+                  | Increase brightness                         |
+| XF86MonBrightnessDown   | brightnessctl -e4 -n2 set 5%-                  | Decrease brightness                         |
+| XF86AudioNext           | playerctl next                                 | Next media track                            |
+| XF86AudioPause/Play     | playerctl play-pause                           | Play/pause media                            |
+| XF86AudioPrev           | playerctl previous                             | Previous media track                        |
+| SUPER + SHIFT + S       | hyprshot -m region --clipboard-only            | Screenshot selection to clipboard           |
+| SUPER + F9              | random-wallpaper.sh                            | Set random wallpaper                        |
+
+*SUPER = Windows key*
+
 ### Guide
 [NVIDIA Drivers](https://github.com/korvahannu/arch-nvidia-drivers-installation-guide)
 
@@ -43,17 +78,17 @@ In tmux session hit 'prefix + I' to install tpm plugins.
 ## TODO
 
 ### General Setup
-- [ ] Automate the installation of **HyprPanel**, ideally as part of a unified script for setting up a fresh Arch Linux environment.
+- [-] Automate the installation of **HyprPanel**, ideally as part of a unified script for setting up a fresh Arch Linux environment.
 - [ ] Automate the installation of **tmux plugins** using TPM (Tmux Plugin Manager).
 - [ ] Identify a more minimal and reliable solution for **line-in audio monitoring**, currently handled via `qpwgraph`.
-- [ ] Troubleshoot and resolve issues with **games crashing or misbehaving in fullscreen** under Hyprland — potentially related to tiling or window rules.
+- [-] Troubleshoot and resolve issues with **games crashing or misbehaving in fullscreen** under Hyprland — potentially related to tiling or window rules.
 - [ ] Implement **Vim-like motion or modal control** in Hyprland (consider tools like `ydotool`, `hyprkeys`, etc.).
 - [ ] Integrate a lightweight, **local AI assistant** into **Neovim** for code completion (e.g., `llm.nvim`, `ollama`, or `llama.cpp`).
 - [ ] Write a brief **post-install guide for GPU driver setup**, with separate instructions for Nvidia and AMD systems.
 - [ ] Add a **final setup message** at the end of the install script, listing any remaining manual steps.
-- [ ] Include a **wallpaper directory** and link it to the appropriate configuration location.
-- [ ] Install and refine the **Rofi configuration**.
-- [ ] Install **swww** for managing wallpapers.
+- [-] Include a **wallpaper directory** and link it to the appropriate configuration location.
+- [-] Install and refine the **Rofi configuration**.
+- [-] Install **swww** for managing wallpapers.
 - [ ] Ensure a method exists to **fully reload all Hyprland components** — HyprPanel currently fails to reload cleanly.
 - [ ] Develop a **HyprPanel module** to display the current keyboard layout.
 - [ ] Add a keybinding to toggle **inner/outer window gaps** dynamically.
@@ -62,14 +97,14 @@ In tmux session hit 'prefix + I' to install tpm plugins.
 - [ ] Enable **system-wide dark mode**.
 - [ ] Set **Num Lock** to be disabled by default.
 - [x] Super + Shift + C = Color picker
-- [ ] Super + Shift + S = Screeshot Selection
+- [-] Super + Shift + S = Screeshot Selection
 - [ ] Tweak animation easing
 
 ### Base Development Tools
-- [ ] Install **base-devel** and **Linux headers** to enable building software from source.
+- [-] Install **base-devel** and **Linux headers** to enable building software from source.
 - [ ] Install **Rust** and **Cargo**.
 - [ ] Install and configure **Oh My Zsh**, and set **Zsh** as the default shell.
-- [ ] Install **yay** (AUR helper) and verify it functions properly.
+- [-] Install **yay** (AUR helper) and verify it functions properly.
 
 ### Essential Applications
 - [ ] Install **1Password**.
@@ -89,24 +124,3 @@ In tmux session hit 'prefix + I' to install tpm plugins.
 - [ ] **Syncthing**
 - [ ] **Timeshift**
 - [ ] **Docker**
-
-### Notes
-**full setup/dev script**
-Make sure sww daemon is running:
-swww-daemon - Find out how to ensure it's running, it looks like when you restart hyprpanel via shortcut it just dies.
-When I open program/app make it so the app will open on current focused monitor and focus on it automaticly
-Make random-wallpaper script pseudorandom
-I added font to hyprpanel which is downloaded only with ssh protocol, config will fail with https
-Make keyboard repeat faster
-Shortcut for Firefox/Zen
-Hide cursor after 10 sec of not using mouse
-
-While testing the installation on another PC, I encountered issues getting my Hyprpanel configuration to work. It appears there may have been breaking changes in the configuration format from the Git version.
-To install the latest Git version (which the current config expects), use the following command:
-yay -S ags-hyprpanel-git
-
-### Required packages
-yay -S ags-hyprpanel-git
-hyprpicker
-nwg-displays - This will create config for current Monitor configuration, Hyprland will source it. This looks like a good option of managing monitors since every device have different setup.
-hyprshell - new project writen in Rust chance of being problematic
