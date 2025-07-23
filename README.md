@@ -16,19 +16,36 @@ Feel free to **steal**, **modify**, and use them however you like.
 
 ### Setup
 
-#### Arguments
-```shell
---https = You will clone repositories that are public via https
---full-setup = Install everything ment for fresh Arch
+This repository includes a `setup.sh` script to automate the installation and configuration of your dotfiles and development environment.
+
+#### Default Behavior
+
+By default, running the script will:
+
+- Install required packages (via `scripts/packages.sh`)
+- Create all necessary config directories
+- Symlink dotfiles into `~/.config` and your home directory
+- Install ZSH and Tmux plugins
+- Clone the Neovim config using **HTTPS**
+
+#### How to Run
+
+```bash
+./setup.sh
 ```
 
-Run setup with https protocol or link configs manually:
-```shell
-git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-chmod +x setup.sh
-./setup.sh --https
-```
+You’ll be prompted to confirm before proceeding. The script is safe to run on fresh or existing systems (it removes and replaces conflicting files).
+
+
+#### Optional Arguments
+You can customize the setup with the following arguments:
+
+| Argument                | Description                                                                    | 
+|-------------------------|--------------------------------------------------------------------------------|
+| --ssh                   |  Clone repositories using SSH instead of HTTPS.                                |
+| --minimal               |  Skip the full system setup (no packages installed). Only dotfiles are linked. |
+
+
 
 ### Tmux
 
@@ -78,10 +95,12 @@ In tmux session hit 'prefix + I' to install tpm plugins.
 ## TODO
 
 ### General Setup
-- [-] Automate the installation of **HyprPanel**, ideally as part of a unified script for setting up a fresh Arch Linux environment.
-- [ ] Automate the installation of **tmux plugins** using TPM (Tmux Plugin Manager).
+- [x] Automate the installation of **HyprPanel**, ideally as part of a unified script for setting up a fresh Arch Linux environment.
+- [x] Automate the installation of **tmux plugins** using TPM (Tmux Plugin Manager).
 - [ ] Identify a more minimal and reliable solution for **line-in audio monitoring**, currently handled via `qpwgraph`.
-- [-] Troubleshoot and resolve issues with **games crashing or misbehaving in fullscreen** under Hyprland — potentially related to tiling or window rules.
+- Move some symlinks to full setup, minimal should have just one nessecary
+- With minimal setup I should at least prompt what's needed to be installed since minimal setup should work on every distro in theory
+- [x] Troubleshoot and resolve issues with **games crashing or misbehaving in fullscreen** under Hyprland — potentially related to tiling or window rules.
 - [ ] Implement **Vim-like motion or modal control** in Hyprland (consider tools like `ydotool`, `hyprkeys`, etc.).
 - [ ] Integrate a lightweight, **local AI assistant** into **Neovim** for code completion (e.g., `llm.nvim`, `ollama`, or `llama.cpp`).
 - [ ] Write a brief **post-install guide for GPU driver setup**, with separate instructions for Nvidia and AMD systems.
@@ -97,14 +116,14 @@ In tmux session hit 'prefix + I' to install tpm plugins.
 - [ ] Enable **system-wide dark mode**.
 - [ ] Set **Num Lock** to be disabled by default.
 - [x] Super + Shift + C = Color picker
-- [-] Super + Shift + S = Screeshot Selection
+- [x] Super + Shift + S = Screeshot Selection
 - [ ] Tweak animation easing
 
 ### Base Development Tools
-- [-] Install **base-devel** and **Linux headers** to enable building software from source.
+- [x] Install **base-devel** and **Linux headers** to enable building software from source.
 - [ ] Install **Rust** and **Cargo**.
 - [ ] Install and configure **Oh My Zsh**, and set **Zsh** as the default shell.
-- [-] Install **yay** (AUR helper) and verify it functions properly.
+- [x] Install **yay** (AUR helper) and verify it functions properly.
 
 ### Essential Applications
 - [ ] Install **1Password**.

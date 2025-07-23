@@ -12,38 +12,25 @@ if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
   exit 1
 fi
 
-USE_HTTPS=false
-FULL_SETUP=false
+USE_HTTPS=true
+FULL_SETUP=true
 
 # Parse arguments
 for arg in "$@"; do
   case $arg in
-    --https)
-      USE_HTTPS=true
+    --ssh)
+      USE_HTTPS=false
       ;;
-    --full-setup)
-      FULL_SETUP=true
+    --minimal)
+      FULL_SETUP=false
       ;;
     *)
       echo "Unknown option: $arg"
-      echo "Usage: $0 [--https] [--full-setup]"
+      echo "Usage: $0 [--ssh] [--minimal]"
       exit 1
       ;;
   esac
 done
-
-# Placeholder for full setup, This will install everything on Fresh Arch
-if $FULL_SETUP; then
-  echo "Full setup selected — placeholder."
-fi
-
-# Create necessary config directories
-echo "Creating config directories..."
-mkdir -p ~/.config/kitty
-mkdir -p ~/.config/hypr
-mkdir -p ~/.config/hyprpanel
-mkdir -p ~/.tmux/plugins
-mkdir -p ~/.oh-my-zsh/custom/plugins
 
 create_clean_symlink() {
   local source=$1
@@ -58,14 +45,31 @@ create_clean_symlink() {
   echo "Linked $target → $source"
 }
 
+# If full setup is selected, run the package installation script
+if $FULL_SETUP; then
+  if [ -f "$(pwd)/scripts/packages.sh" ]; then
+    echo "Running package installation script..."
+    bash "$(pwd)/scripts/packages.sh"
+  else
+    echo "Error: scripts/packages.sh not found."
+    exit 1
+  fi
+fi
+
+# Create necessary config directories
+echo "Creating config directories..."
+mkdir -p ~/.config/kitty
+mkdir -p ~/.config/hypr
+mkdir -p ~/.config/hyprpanel
+mkdir -p ~/.tmux/plugins
+mkdir -p ~/.oh-my-zsh/custom/plugins
+
 # Symlink dotfiles
 echo "Creating symlinks for dotfiles..."
 create_clean_symlink "$(pwd)/tmux.conf" ~/.tmux.conf
 create_clean_symlink "$(pwd)/zshrc" ~/.zshrc
-# create_clean_symlink "$(pwd)/wezterm.lua" ~/.wezterm.lua
 create_clean_symlink "$(pwd)/kitty.conf" ~/.config/kitty/kitty.conf
 create_clean_symlink "$(pwd)/hypr" ~/.config/hypr
-create_clean_symlink "$(pwd)/hyprpanel" ~/.config/hyprpanel
 create_clean_symlink "$(pwd)/waybar" ~/.config/waybar
 create_clean_symlink "$(pwd)/rofi" ~/.config/rofi
 create_clean_symlink "$(pwd)/scripts" ~/.config/custom_scripts
@@ -97,23 +101,27 @@ for name in "${!plugins[@]}"; do
   fi
 done
 
-
 # Remove existing nvim config before cloning
 if [ -d ~/.config/nvim ]; then
   echo "Removing existing ~/.config/nvim..."
   rm -rf ~/.config/nvim
 fi
 
-# Choose protocol based on flag
+# Clone Neovim config and optionally wallpapers
 if $USE_HTTPS; then
-  echo "Cloning nvim config with HTTPS..."
+  echo "Cloning Neovim config with HTTPS..."
   git clone https://github.com/domsley/nvim.git ~/.config/nvim
-  echo "Skipping wallpapers (only cloned via SSH)."
+
+  echo "Skipping personal wallpapers repository (requires SSH)."
+  echo "Note: Some scripts may expect wallpapers in: ~/Pictures/wallpapers"
+  mkdir -p ~/Pictures/wallpapers
+  echo "You can add your own wallpapers manually to that folder."
 else
-  echo "Cloning nvim config with SSH..."
+  echo "Cloning Neovim config with SSH..."
   git clone git@github.com:domsley/nvim.git ~/.config/nvim
 
-  read -p "Do you want to include the wallpaper repository for download? [y/N]: " include_wallpapers
+  read -p "Do you want to clone the wallpapers repository? (This will delete the existing ~/Pictures/wallpapers directory) [y/N]: " include_wallpapers
+
   if [[ "$include_wallpapers" =~ ^[Yy]$ ]]; then
     if [ -d ~/Pictures/wallpapers ]; then
       echo "Removing existing ~/Pictures/wallpapers..."
@@ -127,3 +135,18 @@ else
 fi
 
 echo "Setup complete!"
+
+if ! $FULL_SETUP; then
+  echo "----------------------------------------------------------------------------------"
+  echo ""
+  echo "Minimal setup selected."
+  echo "You may need to manually install the following packages before using this config:"
+  echo "  - zsh"
+  echo "  - tmux"
+  echo "  - git"
+  echo "  - neovim"
+  echo ""
+  echo "Install them using your system's package manager (e.g. apt, pacman, dnf, brew)."
+  echo ""
+  echo "----------------------------------------------------------------------------------"
+fi
