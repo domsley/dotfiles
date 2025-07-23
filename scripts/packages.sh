@@ -26,6 +26,7 @@ PACMAN_PACKAGES=(
     blender
     nwg-displays
     discord
+    gamescope
 )
 
 # Packages from AUR
