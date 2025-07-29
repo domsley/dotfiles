@@ -14,6 +14,16 @@ PACMAN_PACKAGES=(
     hyprshot
     hyprpicker
     hyprlock
+    ranger
+    dunst
+    pipewire
+    libnotify
+    archlinux-xdg-menu
+    xdg-desktop-portal-hyprland
+    qt5-wayland
+    qt6-wayland
+    noto-fonts
+    cronie
     rofi-wayland
     swww
     kitty

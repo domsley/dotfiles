@@ -45,6 +45,30 @@ create_clean_symlink() {
   echo "Linked $target → $source"
 }
 
+ensure_service_active() {
+  local service_name="$1"
+
+  echo "Ensuring $service_name is enabled and running..."
+
+  if systemctl list-unit-files | grep -q "^${service_name}"; then
+    if ! systemctl is-enabled --quiet "$service_name"; then
+      echo "Enabling $service_name..."
+      sudo systemctl enable "$service_name"
+    else
+      echo "$service_name is already enabled."
+    fi
+
+    if ! systemctl is-active --quiet "$service_name"; then
+      echo "🔄 Starting $service_name..."
+      sudo systemctl start "$service_name"
+    else
+      echo "$service_name is already running."
+    fi
+  else
+    echo "$service_name not found. Make sure it's installed."
+  fi
+}
+
 # If full setup is selected, run the package installation script
 if $FULL_SETUP; then
   if [ -f "$(pwd)/scripts/packages.sh" ]; then
@@ -54,12 +78,17 @@ if $FULL_SETUP; then
     echo "Error: scripts/packages.sh not found."
     exit 1
   fi
+
+  # Cronie for timeshift :3
+  ensure_service_active cronie.service
+
 fi
 
 # Create necessary config directories
 echo "Creating config directories..."
 mkdir -p ~/.config/kitty
 mkdir -p ~/.config/hypr
+mkdir -p ~/.config/ranger
 mkdir -p ~/.config/hyprpanel
 mkdir -p ~/.tmux/plugins
 mkdir -p ~/.oh-my-zsh/custom/plugins
@@ -71,6 +100,8 @@ create_clean_symlink "$(pwd)/zshrc" ~/.zshrc
 create_clean_symlink "$(pwd)/kitty.conf" ~/.config/kitty/kitty.conf
 create_clean_symlink "$(pwd)/hypr" ~/.config/hypr
 create_clean_symlink "$(pwd)/waybar" ~/.config/waybar
+create_clean_symlink "$(pwd)/ranger" ~/.config/ranger
+create_clean_symlink "$(pwd)/dunst" ~/.config/dunst
 create_clean_symlink "$(pwd)/rofi" ~/.config/rofi
 create_clean_symlink "$(pwd)/scripts" ~/.config/custom_scripts
 
