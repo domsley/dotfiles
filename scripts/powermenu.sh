@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Menu options
+options=" Shutdown\n Restart\n Logout"
+
+# Rofi command (style can be customized later)
+chosen=$(echo -e "$options" | rofi -dmenu -p "Power Menu" -theme-str '
+    window {width: 20%; }
+    listview {lines: 3; }
+')
+
+case "$chosen" in
+    *Shutdown)
+        systemctl poweroff
+        ;;
+    *Restart)
+        systemctl reboot
+        ;;
+    *Logout)
+        hyprctl dispatch exit
+        ;;
+esac
