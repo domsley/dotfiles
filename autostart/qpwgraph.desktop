@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=qpwgraph --minimized ~/.config/qpwgraph-inputs/LineIn.qpwgraph
-Hidden=false
-NoDisplay=false
-Name=Qpwgraph LineIn
-Comment=Start qpwgraph with LineIn session
