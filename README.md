@@ -3,14 +3,6 @@
 These are my personal dotfiles — tailored for my workflow and system.  
 Feel free to **steal**, **modify**, and use them however you like.
 
-
-
-Requirements:
-
-something for screenhots
-something for colorpick
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 ## Package Installation
 
 > Arch Linux only
