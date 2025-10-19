@@ -3,16 +3,16 @@
   "layer": "top",
   "position": "top",
   "spacing": 0,
-  "height": 26,
-  "modules-left": ["custom/system", "hyprland/workspaces"],
-  "modules-center": ["clock"],
+  "height": 24,
+  "modules-left": ["custom/system", "hyprland/workspaces", "hyprland/window"],
   "modules-right": [
     "group/tray-expander",
-    "bluetooth",
+    "cpu",
     "network",
     "pulseaudio",
-    "cpu",
-    "battery"
+    "bluetooth",
+    "battery",
+    "clock"
   ],
   "hyprland/workspaces": {
     "on-click": "activate",
@@ -39,19 +39,23 @@
     }
   },
   "custom/system": {
-    "format": "<span>Arch</span>",
+    "format": "<span>\udb82\udcc7</span>",
     "tooltip-format": "\nSuper + Space"
   },
-
   "cpu": {
     "interval": 5,
     "format": "󰍛",
     "on-click": "kitty -e btop"
   },
+  // "clock": {
+  //   "format": "{:L%A %H:%M}",
+  //   "format-alt": "{:L%d %B W%V %Y}",
+  //   "tooltip": false,
+  // },
   "clock": {
-    "format": "{:L%A %H:%M}",
-    "format-alt": "{:L%d %B W%V %Y}",
-    "tooltip": false,
+    "format": "{:%d %B %Y}",
+    "format-alt": "{:%a %b %d %I:%M %p}",
+    "tooltip": false
   },
   "network": {
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
@@ -64,6 +68,11 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
+  },
+  "hyprland/window": {
+    "max-length": 100, // Characters count
+    "separate-outputs": true,
+    "icon": false
   },
   "battery": {
     "format": "{capacity}% {icon}",
@@ -114,7 +123,7 @@
     "tooltip": false
   },
   "tray": {
-    "icon-size": 13,
+    "icon-size": 14,
     "spacing": 12
   }
 }

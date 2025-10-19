@@ -44,10 +44,12 @@ declare -a PACMAN_PACKAGES=(
   mako
   fastfetch
   impala
+  swww
 )
 
 # Packages installed from the AUR via yay
 declare -a AUR_PACKAGES=(
+  nwg-look
   qpwgraph
   walker
   elephant

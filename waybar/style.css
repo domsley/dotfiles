@@ -1,40 +1,64 @@
 * {
-  font-family: "Liga SFMono Nerd Font", sans-serif;
-  font-size: 13px;
-  min-height: 0;
+  font-family: "SF Pro Display", "JetBrainsMono Nerd Font", Helvetica, Arial, sans-serif;
+  font-size: 1.3rem;
   padding-right: 2px;
   padding-left: 2px;
-  padding-bottom: 0px;
 }
 
 #waybar {
-  /*background: transparent;*/
-  background: #101010;
-  color: #c6d0f5;
-  margin: 2px 2px;
+  background-color: rgba(220, 218, 220, 0.92);
+  color: #333;
+  margin: 1px 2px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+window#waybar {
+  padding: 0;
+  margin: 0;
 }
 
 #workspaces {
   border-radius: 5px;
-  margin: 5px;
-  background: #101010;
+  margin: 8px;
+  background: transparent;
+  margin-left: 1rem;
+  font-weight: 700;
+  min-height: 30px;
+}
+
+#window {
+  font-weight: 600;
   margin-left: 1rem;
 }
 
 #workspaces button {
-  color: #babbf1;
+  color: #333;
   border-radius: 5px;
-  padding: 0.4rem;
+  padding: 0 0.4rem;
 }
 
 #workspaces button.active {
-  color: #99d1db;
+  color: #333;
   border-radius: 5px;
 }
 
+#custom-system {
+  margin-left: 2rem;
+  margin-right: 1rem;
+  font-size: 1.7rem;
+  padding: 2px;
+}
+
 #workspaces button:hover {
-  color: #85c1dc;
+  color: #333;
+  background: #333;
   border-radius: 5px;
+  border: #999;
+
+  border-radius: 5px;
+  font-weight: 700;
+  min-height: 30px;
 }
 
 #custom-music,
@@ -47,11 +71,18 @@
 #cpu,
 #memory,
 #custom-lock,
+#bluetooth,
 #custom-power {
-  background-color: #101010;
-  padding: 0.5rem 1rem;
-  margin: 5px 0;
+  color: #333;
+  padding: 0rem 1rem;
   border-radius: 0px 5px 5px 0px;
+}
+
+#tray {
+  background-color: #333;
+  border-radius: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 #memory {
@@ -59,10 +90,9 @@
 }
 
 #clock {
-  color: #8caaee;
+  color: #333;
   border-radius: 5px;
-  margin-right: 1rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 #battery {
@@ -87,9 +117,8 @@
 }
 
 #pulseaudio {
-  color: #ea999c;
+  color: #333;
   border-radius: 5px 0px 0px 5%;
-  margin-left: 1rem;
 }
 
 #custom-music {
@@ -106,10 +135,4 @@
   margin-right: 1rem;
   border-radius: 0px 5px 5px 0px;
   color: #e78284;
-}
-
-#tray {
-  margin-right: 0.5rem;
-  margin-left: 0.5rem;
-  border-radius: 5px;
 }
