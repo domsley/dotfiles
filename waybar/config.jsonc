@@ -53,8 +53,7 @@
   //   "tooltip": false,
   // },
   "clock": {
-    "format": "{:%d %B %Y}",
-    "format-alt": "{:%a %b %d %I:%M %p}",
+    "format": "{:%d %B %Y - %I:%M %p}",
     "tooltip": false
   },
   "network": {

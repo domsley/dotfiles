@@ -14,7 +14,6 @@ MANIFEST_FILE=""
 declare -A TARGETS=(
   ["hypr"]="$HOME/.config/hypr"
   ["kitty.conf"]="$HOME/.config/kitty/kitty.conf"
-  ["ranger"]="$HOME/.config/ranger"
   ["tmux.conf"]="$HOME/.tmux.conf"
   ["waybar"]="$HOME/.config/waybar"
   ["zshrc"]="$HOME/.zshrc"
