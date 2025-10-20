@@ -16,6 +16,7 @@ declare -A TARGETS=(
   ["kitty.conf"]="$HOME/.config/kitty/kitty.conf"
   ["tmux.conf"]="$HOME/.tmux.conf"
   ["waybar"]="$HOME/.config/waybar"
+  ["mako"]="$HOME/.config/mako"
   ["zshrc"]="$HOME/.zshrc"
 )
 
