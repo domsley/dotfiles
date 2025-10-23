@@ -45,16 +45,18 @@ declare -a PACMAN_PACKAGES=(
   fastfetch
   impala
   swww
+  rofi
 )
 
 # Packages installed from the AUR via yay
 declare -a AUR_PACKAGES=(
   nwg-look
   qpwgraph
-  walker
-  elephant
-  elephant-desktopapplications
 )
+
+#walker
+#elephant
+#elephant-desktopapplications
 
 # Repositories that must be cloned to specific locations
 # Format: "<git-url>|<destination-path>"

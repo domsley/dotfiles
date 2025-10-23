@@ -13,6 +13,7 @@ MANIFEST_FILE=""
 # Map repository paths to their desired targets
 declare -A TARGETS=(
   ["hypr"]="$HOME/.config/hypr"
+  ["rofi"]="$HOME/.config/rofi"
   ["kitty.conf"]="$HOME/.config/kitty/kitty.conf"
   ["tmux.conf"]="$HOME/.tmux.conf"
   ["waybar"]="$HOME/.config/waybar"

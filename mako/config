@@ -2,8 +2,8 @@
 # Sizing & layout
 width=440
 height=220
-margin=10,11,10,10
-padding=15
+margin=10,10,10,10
+padding=17
 border-size=2
 border-radius=6
 max-visible=3
@@ -13,9 +13,13 @@ anchor=top-right
 # output=DP-1
 
 # Colors (ARGB hex). Example: semi-transparent background.
-background-color=#dcdadc
+#background-color=#dcdadc
+#background-color=#101010C0
+#background-color=#dcdadccc
+background-color=#dcdadcd9
+
 text-color=#333333
-border-color=#dcdadc
+border-color=#333333
 # progress can be a plain color or "over <color>" to overlay the bg
 progress-color=over #89b4faff
 
