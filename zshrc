@@ -44,5 +44,4 @@ export EDITOR='nvim'
 # ALIASES
 alias ssh='TERM="xterm-256color" ssh'
 alias sail='./vendor/bin/sail'
-#alias vim="nvim"
 alias nv="nvim"
