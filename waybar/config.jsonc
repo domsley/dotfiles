@@ -6,13 +6,14 @@
   "height": 24,
   "modules-left": ["custom/system", "hyprland/workspaces", "hyprland/window"],
   "modules-right": [
+    "custom/docker-icon",
     "group/tray-expander",
     "cpu",
     "network",
     "pulseaudio",
     "bluetooth",
     "battery",
-    "clock"
+    "clock",
   ],
   "hyprland/workspaces": {
     "on-click": "activate",
@@ -28,24 +29,24 @@
       "7": "7",
       "8": "8",
       "9": "9",
-      "active": "󱓻"
+      "active": "󱓻",
     },
     "persistent-workspaces": {
       "1": [],
       "2": [],
       "3": [],
       "4": [],
-      "5": []
-    }
+      "5": [],
+    },
   },
   "custom/system": {
     "format": "<span>\udb82\udcc7</span>",
-    "tooltip-format": "\nSuper + Space"
+    "tooltip-format": "\nSuper + Space",
   },
   "cpu": {
     "interval": 5,
     "format": "󰍛",
-    "on-click": "kitty -e btop"
+    "on-click": "kitty -e btop",
   },
   // "clock": {
   //   "format": "{:L%A %H:%M}",
@@ -54,7 +55,8 @@
   // },
   "clock": {
     "format": "{:%d %B %Y - %I:%M %p}",
-    "tooltip": false
+    "format-alt": "{:%d.%m - %I:%M %p}",
+    "tooltip": false,
   },
   "network": {
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
@@ -71,7 +73,7 @@
   "hyprland/window": {
     "max-length": 100, // Characters count
     "separate-outputs": true,
-    "icon": false
+    "icon": false,
   },
   "battery": {
     "format": "{capacity}% {icon}",
@@ -80,7 +82,7 @@
     "format-plugged": "",
     "format-icons": {
       "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
-      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     },
     "format-full": "󰂅",
     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
@@ -88,15 +90,15 @@
     "interval": 5,
     "states": {
       "warning": 20,
-      "critical": 10
-    }
+      "critical": 10,
+    },
   },
   "bluetooth": {
     "format": "",
     "format-disabled": "󰂲",
     "format-connected": "",
     "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "blueberry"
+    "on-click": "blueberry",
   },
   "pulseaudio": {
     "format": "{icon}",
@@ -106,23 +108,28 @@
     "scroll-step": 5,
     "format-muted": "",
     "format-icons": {
-      "default": ["", "", ""]
-    }
+      "default": ["", "", ""],
+    },
   },
   "group/tray-expander": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 600,
-      "children-class": "tray-group-item"
+      "children-class": "tray-group-item",
     },
-    "modules": ["custom/expand-icon", "tray"]
+    "modules": ["custom/expand-icon", "tray"],
+  },
+  "custom/docker-icon": {
+    "format": " ",
+    "on-click": "kitty lazydocker",
+    "tooltip": false,
   },
   "custom/expand-icon": {
     "format": " ",
-    "tooltip": false
+    "tooltip": false,
   },
   "tray": {
     "icon-size": 14,
-    "spacing": 12
-  }
+    "spacing": 12,
+  },
 }
