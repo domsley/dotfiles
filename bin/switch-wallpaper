@@ -1,0 +1,44 @@
+#!/bin/bash
+WALLPAPERS_DIR="$HOME/Pictures/wallpapers"
+STATE_FILE="$HOME/.current_wallpaper_index"
+
+# Get list of wallpapers (sorted alphabetically)
+mapfile -t WALLPAPERS < <(find "$WALLPAPERS_DIR" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \) | sort)
+
+# Exit if no wallpapers found
+if [ ${#WALLPAPERS[@]} -eq 0 ]; then
+    echo "No valid wallpapers found in $WALLPAPERS_DIR."
+    exit 1
+fi
+
+# Load or initialize current index
+if [ -f "$STATE_FILE" ]; then
+    CURRENT_INDEX=$(cat "$STATE_FILE")
+else
+    CURRENT_INDEX=0
+fi
+
+# Wrap around if necessary
+if (( CURRENT_INDEX >= ${#WALLPAPERS[@]} )); then
+    CURRENT_INDEX=0
+fi
+
+IMAGE="${WALLPAPERS[$CURRENT_INDEX]}"
+
+# Prepare next index
+NEXT_INDEX=$(( (CURRENT_INDEX + 1) % ${#WALLPAPERS[@]} ))
+echo "$NEXT_INDEX" > "$STATE_FILE"
+
+# Init swww if not running
+if ! swww query &>/dev/null; then
+    echo "Initializing swww..."
+    swww init
+fi
+
+# Set the wallpaper with a faster transition
+echo "Setting wallpaper: $IMAGE"
+swww img "$IMAGE" --transition-fps 120 --transition-type fade --transition-step 2
+
+# Notify user
+notify-send -i "$IMAGE" -u low -t 4000 "Wallpaper" "changed to: $IMAGE"
+

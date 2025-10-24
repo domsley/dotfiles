@@ -1,0 +1,150 @@
+#!/usr/bin/env bash
+# change-gaps — adjust Hyprland gaps_in / gaps_out reliably
+# Caches last applied values (in ~/.cache/change-gaps.json) to avoid stale hyprctl reads.
+# Examples:
+#   change-gaps --inc-in --inc-out
+#   change-gaps --dec-in --dec-out --step 3
+#   change-gaps --reset-cache
+
+set -Eeuo pipefail
+
+STEP=10
+MIN_IN=10
+MIN_OUT=10
+MAX_IN=999
+MAX_OUT=999
+DO_NOTIFY=0
+CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/change-gaps.json"
+
+die(){ printf "Error: %s\n" "$*" >&2; exit 1; }
+need(){ command -v "$1" >/dev/null 2>&1 || die "'$1' not found"; }
+is_int(){ [[ "$1" =~ ^-?[0-9]+$ ]]; }
+
+need hyprctl
+need jq
+
+mkdir -p -- "${CACHE%/*}"
+
+get_opt_raw(){
+  # Best-effort read from hyprctl; some versions expose .int, others .value.
+  hyprctl -j getoption "$1" 2>/dev/null | jq -r '(.int // .value // empty)'
+}
+
+load_cache(){
+  if [[ -s "$CACHE" ]]; then
+    jq -r '.' "$CACHE" 2>/dev/null || echo '{}' > "$CACHE"
+  else
+    echo '{}' > "$CACHE"
+  fi
+}
+
+read_current(){
+  # Prefer cache; if missing, fall back to hyprctl and seed cache.
+  local key="$1" cache_key="$2" v cached
+  cached="$(jq -r --arg k "$cache_key" '.[$k] // empty' "$CACHE")"
+  if [[ -n "$cached" && "$cached" != "null" ]]; then
+    echo "$cached"
+    return
+  fi
+  v="$(get_opt_raw "$key" || true)"
+  if ! is_int "${v:-x}"; then v=0; fi
+  jq --arg k "$cache_key" --argjson v "$v" '.[$k]=$v' "$CACHE" > "$CACHE.tmp" && mv "$CACHE.tmp" "$CACHE"
+  echo "$v"
+}
+
+write_cache(){
+  local key="$1" val="$2"
+  jq --arg k "$key" --argjson v "$val" '.[$k]=$v' "$CACHE" > "$CACHE.tmp" && mv "$CACHE.tmp" "$CACHE"
+}
+
+bump_clamped(){
+  local cur="$1" delta="$2" min="$3" max="$4" new
+  new=$((cur + delta))
+  (( new < min )) && new="$min"
+  (( new > max )) && new="$max"
+  echo "$new"
+}
+
+print_help(){
+  cat <<'EOF'
+change-gaps — adjust Hyprland gaps
+
+Actions (can pass multiple):
+  --inc-in | --inc_gaps_in      increase general:gaps_in
+  --dec-in | --dec_gaps_in      decrease general:gaps_in
+  --inc-out| --inc_gaps_out     increase general:gaps_out
+  --dec-out| --dec_gaps_out     decrease general:gaps_out
+
+Options:
+  --step N       change step size (default 5)
+  --min-in N     clamp min gaps_in   (default 0)
+  --min-out N    clamp min gaps_out  (default 0)
+  --max-in N     clamp max gaps_in   (default 999)
+  --max-out N    clamp max gaps_out  (default 999)
+  --notify       send a desktop notification
+  --reset-cache  clear cached values
+  -h|--help
+
+Tip: bind once for both, e.g.
+  change-gaps --inc-in --inc-out
+EOF
+}
+
+# ---- parse args ----
+ACTIONS=()
+RESET_CACHE=0
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --inc-in|--inc_gaps_in) ACTIONS+=("INC_IN"); shift ;;
+    --dec-in|--dec_gaps_in) ACTIONS+=("DEC_IN"); shift ;;
+    --inc-out|--inc_gaps_out) ACTIONS+=("INC_OUT"); shift ;;
+    --dec-out|--dec_gaps_out) ACTIONS+=("DEC_OUT"); shift ;;
+    --step)    is_int "${2:-x}" || die "--step needs integer"; STEP="$2"; shift 2 ;;
+    --step=*)  v="${1#*=}"; is_int "$v" || die "--step needs integer"; STEP="$v"; shift ;;
+    --min-in)  is_int "${2:-x}" || die "--min-in needs int";  MIN_IN="$2";  shift 2 ;;
+    --min-out) is_int "${2:-x}" || die "--min-out needs int"; MIN_OUT="$2"; shift 2 ;;
+    --max-in)  is_int "${2:-x}" || die "--max-in needs int";  MAX_IN="$2";  shift 2 ;;
+    --max-out) is_int "${2:-x}" || die "--max-out needs int"; MAX_OUT="$2"; shift 2 ;;
+    --notify)  DO_NOTIFY=1; shift ;;
+    --reset-cache) RESET_CACHE=1; shift ;;
+    -h|--help) print_help; exit 0 ;;
+    *) die "Unknown option: $1 (see --help)";;
+  esac
+done
+
+(( RESET_CACHE )) && { : > "$CACHE"; }
+
+(( ${#ACTIONS[@]} )) || { print_help; exit 2; }
+
+# ---- read current values (cached or hyprctl) ----
+load_cache >/dev/null
+
+CUR_IN="$(read_current "general:gaps_in"  "gaps_in")"
+CUR_OUT="$(read_current "general:gaps_out" "gaps_out")"
+
+NEW_IN="$CUR_IN"
+NEW_OUT="$CUR_OUT"
+
+for a in "${ACTIONS[@]}"; do
+  case "$a" in
+    INC_IN)  NEW_IN="$(bump_clamped "$NEW_IN"  "$STEP"  "$MIN_IN"  "$MAX_IN")" ;;
+    DEC_IN)  NEW_IN="$(bump_clamped "$NEW_IN" "-$STEP" "$MIN_IN"  "$MAX_IN")" ;;
+    INC_OUT) NEW_OUT="$(bump_clamped "$NEW_OUT" "$STEP" "$MIN_OUT" "$MAX_OUT")" ;;
+    DEC_OUT) NEW_OUT="$(bump_clamped "$NEW_OUT" "-$STEP" "$MIN_OUT" "$MAX_OUT")" ;;
+  esac
+done
+
+# ---- apply in one go ----
+hyprctl --batch "keyword general:gaps_in $NEW_IN ; keyword general:gaps_out $NEW_OUT" >/dev/null
+
+# ---- update cache & output ----
+write_cache "gaps_in"  "$NEW_IN"
+write_cache "gaps_out" "$NEW_OUT"
+
+printf "general:gaps_in:  %s -> %s\n" "$CUR_IN" "$NEW_IN"
+printf "general:gaps_out: %s -> %s\n" "$CUR_OUT" "$NEW_OUT"
+
+if (( DO_NOTIFY )) && command -v notify-send >/dev/null 2>&1; then
+  notify-send "Hyprland gaps" "in: $CUR_IN → $NEW_IN | out: $CUR_OUT → $NEW_OUT"
+fi
+

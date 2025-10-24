@@ -12,6 +12,7 @@ MANIFEST_FILE=""
 
 # Map repository paths to their desired targets
 declare -A TARGETS=(
+  ["bin"]="$HOME/.local/bin"
   ["hypr"]="$HOME/.config/hypr"
   ["rofi"]="$HOME/.config/rofi"
   ["kitty.conf"]="$HOME/.config/kitty/kitty.conf"

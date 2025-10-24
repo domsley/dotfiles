@@ -31,6 +31,7 @@ declare -a PACMAN_PACKAGES=(
   qt5-wayland
   qt6-wayland
   ranger
+  freerdp
   remmina
   tmux
   unzip
@@ -46,6 +47,7 @@ declare -a PACMAN_PACKAGES=(
   impala
   swww
   rofi
+  nextcloud-client
 )
 
 # Packages installed from the AUR via yay
