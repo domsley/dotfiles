@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Menu options
-options="  Shutdown\n  Restart\n  Logout"
+options="Shutdown\nRestart\nLogout"
 
 # Rofi command (style can be customized later)
 chosen=$(echo -e "$options" | rofi -dmenu -p "Power Menu" -theme-str '
-    window {width: 400px; }
+    window {width: 330px; }
     listview {lines: 3; }
 ')
 

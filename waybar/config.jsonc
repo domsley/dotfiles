@@ -41,6 +41,7 @@
   },
   "custom/system": {
     "format": "<span>\udb82\udcc7</span>",
+    "on-click": "$HOME/.local/bin/powermenu",
     "tooltip-format": "\nSuper + Space",
   },
   "cpu": {
