@@ -21,6 +21,7 @@ declare -A TARGETS=(
   ["waybar"]="$HOME/.config/waybar"
   ["mako"]="$HOME/.config/mako"
   ["zshrc"]="$HOME/.zshrc"
+  ["chromium-flags.conf"]="$HOME/.config/chromium-flags.conf"
 )
 
 usage() {
