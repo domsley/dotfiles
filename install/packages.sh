@@ -47,7 +47,10 @@ declare -a PACMAN_PACKAGES=(
   impala
   swww
   rofi
+  sunshine
   nextcloud-client
+  solaar
+  openrgb
 )
 
 # Packages installed from the AUR via yay
