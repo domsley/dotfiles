@@ -42,11 +42,16 @@ declare -a PACMAN_PACKAGES=(
   lazygit
   lazydocker
   btop
-  mako
+
+  #mako
+  swaync
+
   fastfetch
   impala
   swww
-  rofi
+
+  #rofi
+
   sunshine
   nextcloud-client
   solaar

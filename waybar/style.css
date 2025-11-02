@@ -2,45 +2,58 @@
     font-family:
         "SF Pro Display", "JetBrainsMono Nerd Font", Helvetica, Arial,
         sans-serif;
-    font-size: 1rem;
+
+    /* font-family: */
+    /*     "SF Pro Display", "Symbols Nerd Font Mono", "JetBrainsMono Nerd Font", Helvetica, Arial, */
+    /*     sans-serif; */
+
+    font-size: 1.12rem;
     padding-right: 2px;
     padding-left: 2px;
     min-height: 0;
 }
 
 #waybar {
-    background-color: rgba(220, 218, 220, 0.65);
+    background-color: rgba(220, 218, 220, 0.6);
     color: #333;
     margin: 1px 5px;
     margin-top: 10px;
     margin-bottom: 10px;
-}
 
-#waybar {
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.7);
-    box-shadow: 1 1 3 1px #151515;
-    transition-property: background-color;
-    transition-duration: 0.5s;
+    /* box-shadow: */
+    /* 0 19px 38px rgba(0, 0, 0, 0.3), */
+    /* 0 15px 12px rgba(0, 0, 0, 0.22); */
 }
 
 #window {
-    font-weight: 700;
-    margin-left: 1rem;
     color: #333;
+    font-weight: 700;
+
+    margin-left: 1rem;
+
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 #workspaces {
-    margin-top: 2px;
-    margin-bottom: 2px;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+
     background: transparent;
-    margin-left: 0rem;
-    min-height: 30px;
+    margin-left: 0.6rem;
+    min-height: 26px;
+
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    border-radius: 7px;
+    background-color: #333;
 }
 
 #workspaces button {
-    color: #333;
+    color: rgba(220, 218, 220, 0.4);
     border-radius: 3px;
-    padding: 0 0.35rem;
+    padding: 0 0.25rem;
     font-weight: 700;
 }
 
@@ -49,23 +62,27 @@
 }
 
 #workspaces button.active {
-    color: #333;
+    color: rgba(220, 218, 220, 1);
     border-radius: 5px;
 }
 
 #workspaces button:hover {
-    color: #fff;
-    background: #333;
-    border-radius: 5px;
-    border-color: #333;
+    color: rgba(220, 218, 220, 0.9);
+    /* background: #333; */
+    /* border-radius: 5px; */
+    border-color: transparent;
 }
 
 #custom-system {
-    margin-left: 2rem;
-    margin-right: 1.4rem;
-    font-size: 1.7rem;
-    /* Align since this icon is kinda weird */
-    padding-bottom: 4px;
+    margin-right: 0.7rem;
+    margin-left: 1.3rem;
+
+    background-image: url("./icons/os.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.8rem;
+    min-width: 1.8rem;
+
 }
 
 #custom-music,
@@ -82,29 +99,32 @@
 #custom-docker-icon,
 #custom-power {
     color: #333;
-    padding: 0rem 0.8rem;
+    padding: 0rem 1.1rem;
     border-radius: 0px 5px 5px 0px;
-    font-size: 1.3rem;
+    font-size: 1.8rem;
+}
+
+#network {
+    font-size: 1.6rem;
 }
 
 #custom-docker-icon {
-    font-size: 1.8rem;
-    padding: 0rem 0.3rem;
-    margin-bottom: 1px;
+    padding: 0rem 0.35rem;
+    margin-bottom: 2px;
+
+    background-image: url("./icons/docker.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.8rem;
+    min-width: 1.8rem;
 }
 
 #bluetooth {
-    font-size: 1.35rem;
+    font-size: 1.65rem;
     /*Small position correction*/
     margin-bottom: 1px;
 }
 
-#tray {
-    background-color: #333;
-    border-radius: 4px;
-    margin-top: 2px;
-    margin-bottom: 2px;
-}
 
 #memory {
     border-radius: 0px 5px 5px 0px;
@@ -112,9 +132,10 @@
 
 #clock {
     color: #333;
-    border-radius: 5px;
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: 700;
+    font-size: 1.18rem;
+
+    margin-left: 0.8rem;
 }
 
 #battery {
@@ -140,12 +161,31 @@
 
 #pulseaudio {
     color: #333;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     border-radius: 5px 0px 0px 5%;
 }
 
 /*Small position correction*/
 #custom-expand-icon {
-    font-size: 1.1rem;
-    margin-bottom: 1px;
+    font-size: 1.4rem;
+    margin-bottom: 2px;
+    margin-right: 0.4rem;
 }
+
+#tray {
+    background-color: #333;
+    border-radius: 4px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+#custom-control-center {
+  background-image: url("./icons/control-center.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.5rem;  /* tweak size */
+  min-width: 1.5rem;        /* ensures it shows up */
+}
+
+
+

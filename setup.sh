@@ -15,11 +15,11 @@ declare -A TARGETS=(
   ["bin"]="$HOME/.local/bin"
   ["nvim"]="$HOME/.config/nvim"
   ["hypr"]="$HOME/.config/hypr"
-  ["rofi"]="$HOME/.config/rofi"
+  ["walker"]="$HOME/.config/walker"
+  ["swaync"]="$HOME/.config/swaync"
   ["kitty.conf"]="$HOME/.config/kitty/kitty.conf"
   ["tmux.conf"]="$HOME/.tmux.conf"
   ["waybar"]="$HOME/.config/waybar"
-  ["mako"]="$HOME/.config/mako"
   ["zshrc"]="$HOME/.zshrc"
   ["chromium-flags.conf"]="$HOME/.config/chromium-flags.conf"
 )

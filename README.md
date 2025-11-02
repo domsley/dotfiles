@@ -1,6 +1,6 @@
 ## Introduction
 
-These are my personal dotfiles — tailored for my workflow and system.  
+These are my personal dotfiles — tailored for my workflow and system.
 Feel free to **steal**, **modify**, and use them however you like.
 
 ## Package Installation
@@ -19,3 +19,4 @@ Helpful flags:
 - `--list` shows the tracked package lists.
 
 The script also ensures external dependencies are cloned, e.g. `~/.tmux/plugins/tpm`.
+
