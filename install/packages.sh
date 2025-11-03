@@ -42,16 +42,10 @@ declare -a PACMAN_PACKAGES=(
   lazygit
   lazydocker
   btop
-
-  #mako
   swaync
-
   fastfetch
   impala
   swww
-
-  #rofi
-
   sunshine
   nextcloud-client
   solaar
@@ -62,11 +56,9 @@ declare -a PACMAN_PACKAGES=(
 declare -a AUR_PACKAGES=(
   nwg-look
   qpwgraph
+  elephant-all
+  walker
 )
-
-#walker
-#elephant
-#elephant-desktopapplications
 
 # Repositories that must be cloned to specific locations
 # Format: "<git-url>|<destination-path>"
