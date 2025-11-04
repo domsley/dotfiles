@@ -74,14 +74,15 @@
 }
 
 #custom-system {
-    margin-right: 0.7rem;
-    margin-left: 1.3rem;
+    margin-right: 0.4rem;
+    margin-left: 1.2rem;
 
-    background-image: url("./icons/os.svg");
+    background-image: url("./icons/ramen.svg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 1.8rem;
-    min-width: 1.8rem;
+
+    background-size: 2.4rem;
+    min-width: 2.4rem;
 
 }
 
