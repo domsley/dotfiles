@@ -58,6 +58,7 @@ declare -a AUR_PACKAGES=(
   qpwgraph
   elephant-all
   walker
+  jellyfin-tui
 )
 
 # Repositories that must be cloned to specific locations

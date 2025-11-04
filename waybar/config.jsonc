@@ -3,9 +3,10 @@
   "layer": "top",
   "position": "top",
   "spacing": 0,
-  "height": 24,
+  "height": 23,
   "modules-left": ["custom/system", "hyprland/workspaces", "hyprland/window"],
   "modules-right": [
+    "hyprland/language",
     "group/tray-expander",
     "custom/docker-icon",
     "cpu",
@@ -126,7 +127,7 @@
     "modules": ["custom/expand-icon", "tray"],
   },
   "custom/docker-icon": {
-    "format": " ",
+    "format": "",
     "on-click": "kitty lazydocker",
     "tooltip": false,
   },
@@ -142,5 +143,14 @@
   "tray": {
     "icon-size": 14,
     "spacing": 12,
+  },
+  "custom/music-player": {
+    "format": "Music",
+    "on-click": "kitty jellyfin-tui",
+  },
+  "hyprland/language": {
+    "format": "{}",
+    "format-cz": "cz",
+    "format-en": "us",
   },
 }

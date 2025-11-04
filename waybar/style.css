@@ -99,24 +99,27 @@
 #custom-docker-icon,
 #custom-power {
     color: #333;
-    padding: 0rem 1.1rem;
+    padding: 0rem 1rem;
     border-radius: 0px 5px 5px 0px;
     font-size: 1.8rem;
 }
 
 #network {
     font-size: 1.6rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
 }
 
 #custom-docker-icon {
     padding: 0rem 0.35rem;
     margin-bottom: 2px;
+    font-size: 1.9rem;
 
-    background-image: url("./icons/docker.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 1.8rem;
-    min-width: 1.8rem;
+    /* background-image: url("./icons/docker.svg"); */
+    /* background-repeat: no-repeat; */
+    /* background-position: center; */
+    /* background-size: 2rem; */
+    /* min-width: 2rem; */
 }
 
 #bluetooth {
@@ -125,7 +128,6 @@
     margin-bottom: 1px;
 }
 
-
 #memory {
     border-radius: 0px 5px 5px 0px;
 }
@@ -133,9 +135,10 @@
 #clock {
     color: #333;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 
-    margin-left: 0.8rem;
+    margin-left: 1rem;
+    margin-right: 0.5rem;
 }
 
 #battery {
@@ -163,6 +166,7 @@
     color: #333;
     font-size: 1.4rem;
     border-radius: 5px 0px 0px 5%;
+    margin-bottom: 2px;
 }
 
 /*Small position correction*/
@@ -183,9 +187,20 @@
   background-image: url("./icons/control-center.svg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 1.5rem;  /* tweak size */
-  min-width: 1.5rem;        /* ensures it shows up */
+  background-size: 1.6rem;  /* tweak size */
+  min-width: 1.6rem;        /* ensures it shows up */
+  margin-bottom: 2px;
 }
 
-
-
+#language {
+  color: rgba(220, 218, 220, 0.9);
+  background-color: #333;
+  margin-top: 6px;
+  margin-bottom: 8px;
+  margin-right: 15px;
+  border-radius: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+}
