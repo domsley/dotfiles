@@ -8,6 +8,7 @@
   "modules-right": [
     "hyprland/language",
     "group/tray-expander",
+    "custom/music-player",
     "custom/docker-icon",
     "cpu",
     "network",
@@ -145,8 +146,8 @@
     "spacing": 12,
   },
   "custom/music-player": {
-    "format": "Music",
-    "on-click": "kitty jellyfin-tui",
+    "format": "󰼄",
+    "on-click": "kitty start-music-player",
   },
   "hyprland/language": {
     "format": "{}",

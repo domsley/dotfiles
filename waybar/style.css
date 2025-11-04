@@ -85,7 +85,6 @@
 
 }
 
-#custom-music,
 #tray,
 #backlight,
 #clock,
@@ -203,4 +202,11 @@
   padding-right: 12px;
   font-weight: 700;
   font-size: 1rem;
+}
+
+#custom-music-player {
+    color: #333;
+    padding-right: 1.2rem;
+    padding-left: 0.3rem;
+    font-size: 1.7rem;
 }
