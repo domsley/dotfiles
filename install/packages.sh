@@ -59,6 +59,7 @@ declare -a AUR_PACKAGES=(
   elephant-all
   walker
   jellyfin-tui
+  proton-mail
 )
 
 # Repositories that must be cloned to specific locations
