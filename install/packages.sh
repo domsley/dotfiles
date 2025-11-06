@@ -60,6 +60,8 @@ declare -a AUR_PACKAGES=(
   walker
   jellyfin-tui
   proton-mail
+  signal-desktop
+  localsend
 )
 
 # Repositories that must be cloned to specific locations

@@ -45,3 +45,9 @@ export EDITOR='nvim'
 alias ssh='TERM="xterm-256color" ssh'
 alias sail='./vendor/bin/sail'
 alias nv="nvim"
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/potm/.dart-cli-completion/zsh-config.zsh ]] && . /home/potm/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
