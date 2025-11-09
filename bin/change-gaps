@@ -148,3 +148,7 @@ if (( DO_NOTIFY )) && command -v notify-send >/dev/null 2>&1; then
   notify-send "Hyprland gaps" "in: $CUR_IN → $NEW_IN | out: $CUR_OUT → $NEW_OUT"
 fi
 
+
+
+
+

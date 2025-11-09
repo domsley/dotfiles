@@ -42,3 +42,5 @@ swww img "$IMAGE" --transition-fps 120 --transition-type fade --transition-step 
 # Notify user
 notify-send -i "$IMAGE" -u low -t 4000 -a "Wallpaper" "changed to: $(basename "$IMAGE")"
 
+
+
