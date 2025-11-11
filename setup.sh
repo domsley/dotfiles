@@ -16,6 +16,7 @@ declare -A TARGETS=(
   ["nvim"]="$HOME/.config/nvim"
   ["hypr"]="$HOME/.config/hypr"
   ["walker"]="$HOME/.config/walker"
+  ["rofi"]="$HOME/.config/rofi"
   ["swaync"]="$HOME/.config/swaync"
   ["kitty.conf"]="$HOME/.config/kitty/kitty.conf"
   ["tmux.conf"]="$HOME/.tmux.conf"

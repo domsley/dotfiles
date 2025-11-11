@@ -22,6 +22,7 @@ declare -a PACMAN_PACKAGES=(
   hyprpicker
   hyprshot
   kitty
+  rofi
   neovim
   noto-fonts
   pipewire
@@ -54,10 +55,11 @@ declare -a PACMAN_PACKAGES=(
 
 # Packages installed from the AUR via yay
 declare -a AUR_PACKAGES=(
+  rofi-calc
   nwg-look
   qpwgraph
-  elephant-all
-  walker
+  #elephant-all
+  #walker
   jellyfin-tui
   proton-mail
   signal-desktop
