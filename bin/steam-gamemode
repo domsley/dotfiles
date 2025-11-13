@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+gamescope --prefer-output=HDMI-A-1 -e -w 2560 -h 1440 -r 144.0 -- steam -steamdeck -steamos3
+
+
+

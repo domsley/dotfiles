@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Get the currently active window class
+ACTIVE_CLASS=$(hyprctl activewindow -j 2>/dev/null | jq -r '.class // empty' 2>/dev/null)
+
+# Check if current window is a game (steam_app_* or .exe)
+if [[ "$ACTIVE_CLASS" =~ ^(steam_app_.*|.+\.exe)$ ]]; then
+    # Currently focused on game, switch to Steam (force focus)
+    hyprctl dispatch focuswindow "class:^(?i)steam$"
+    # Bring to top to ensure it's visible
+    hyprctl dispatch bringactivetotop
+elif [[ "$ACTIVE_CLASS" =~ ^(?i)steam$ ]]; then
+    # Currently focused on Steam, switch to game (force focus)
+    # Find the first game window and focus it
+    GAME_WINDOW=$(hyprctl clients -j 2>/dev/null | jq -r '.[] | select(.class | test("^(steam_app_.*|.+\.exe)$")) | .address' | head -n1)
+    if [ -n "$GAME_WINDOW" ]; then
+        hyprctl dispatch focuswindow "address:$GAME_WINDOW"
+        hyprctl dispatch bringactivetotop
+    else
+        # If no game found, just try to focus any game window by class
+        hyprctl dispatch focuswindow "class:^(steam_app_.*|.+\.exe)$"
+        hyprctl dispatch bringactivetotop
+    fi
+else
+    # Not focused on either, try to focus Steam first, then game
+    STEAM_WINDOW=$(hyprctl clients -j 2>/dev/null | jq -r '.[] | select(.class | test("^(?i)steam$")) | select(.title == "Steam") | .address' | head -n1)
+    if [ -n "$STEAM_WINDOW" ]; then
+        hyprctl dispatch focuswindow "address:$STEAM_WINDOW"
+        hyprctl dispatch bringactivetotop
+    else
+        # Fallback: try to focus by class
+        hyprctl dispatch focuswindow "class:^(?i)steam$"
+        hyprctl dispatch bringactivetotop
+    fi
+fi
+
